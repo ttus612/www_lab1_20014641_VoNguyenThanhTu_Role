@@ -1,16 +1,16 @@
 package vn.edu.iuh.fit.lab_week01.models;
 
 public class Role {
-    private String role_id;
+    private int role_id;
     private String role_name;
     private String description;
     private Status status;
 
-    public String getRole_id() {
+    public int getRole_id() {
         return role_id;
     }
 
-    public void setRole_id(String role_id) {
+    public void setRole_id(int role_id) {
         this.role_id = role_id;
     }
 
@@ -41,7 +41,13 @@ public class Role {
     public Role() {
     }
 
-    public Role(String role_id, String role_name, String description, Status status) {
+    public Role(String role_name, String description, Status status) {
+        this.role_name = role_name;
+        this.description = description;
+        this.status = status;
+    }
+
+    public Role(int role_id, String role_name, String description, Status status) {
         this.role_id = role_id;
         this.role_name = role_name;
         this.description = description;
@@ -51,7 +57,7 @@ public class Role {
     @Override
     public String toString() {
         return "Role{" +
-                "role_id='" + role_id + '\'' +
+                "role_id=" + role_id +
                 ", role_name='" + role_name + '\'' +
                 ", description='" + description + '\'' +
                 ", status=" + status +

@@ -25,14 +25,17 @@
             if (pageNav != null) {
                 if (pageNav.equals("home")) {
                     %><jsp:include page="home.jsp" /><%
-                } else if (pageNav.equals("layout2")) {
-                    %><jsp:include page="layout2.jsp" /><%
                 }else if (pageNav.equals("listAc")) {
                     %><jsp:include page="account/listAccount.jsp" /><%
                 }else if (pageNav.equals("infoAc")) {
-                     %><jsp:include page="account/informationAccount.jsp" /><%
+                    %><jsp:include page="account/informationAccount.jsp" /><%
+                } else if (pageNav.equals("listL")) {
+                    %><jsp:include page="log/listLog.jsp" /><%
+                } else if (pageNav.equals("listR")) {
+                    %><jsp:include page="role/listRole.jsp" /><%
+                }else if (pageNav.equals("addR")) {
+                    %><jsp:include page="role/addRole.jsp" /><%
                 }
-
              }
         %>
     </div>

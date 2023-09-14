@@ -30,7 +30,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item"  href="#">Add log</a></li>
-                        <li><a class="dropdown-item" href="#">List log</a></li>
+                        <li><a class="dropdown-item" href="list-log?page=listL&action=listLog">List log</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -38,8 +38,8 @@
                         Role
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Add role</a></li>
-                        <li><a class="dropdown-item" href="#">List role</a></li>
+                        <li><a class="dropdown-item" href="add-role?page=addR&action=addRole">Add role</a></li>
+                        <li><a class="dropdown-item" href="list-role?page=listR&action=listRole">List role</a></li>
                     </ul>
                 </li>
 

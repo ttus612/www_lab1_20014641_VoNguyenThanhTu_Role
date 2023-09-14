@@ -18,5 +18,20 @@
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern>/list-account</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/list-log</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/list-role</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/add-role</url-pattern>
+    </servlet-mapping>
 </web-app>
 
