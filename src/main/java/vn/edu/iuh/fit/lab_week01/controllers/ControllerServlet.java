@@ -14,23 +14,28 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name = "ControllerServlet", urlPatterns ={"/"})
+//@WebServlet(name = "ControllerServlet", urlPatterns ={"/"})
 public class ControllerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("doGet method is called.");
+
         String action = req.getParameter("action");
+
         AccountRepository accountRepository = new AccountRepository();
         if (action.equals("listAccount")){
             List<Account> accountList = accountRepository.getAllAccount(); // Thay thế phương thức và nguồn dữ liệu thực tế của bạn ở đây.
             req.setAttribute("accountList", accountList);
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/account/listAccount.jsp"); // Thay thế đường dẫn JSP thực tế của bạn ở đây.
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/dashboard.jsp"); // Thay thế đường dẫn JSP thực tế c
             requestDispatcher.forward(req, resp);
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("doPost method is called.");
+
         String action = req.getParameter("action");
         AccountRepository accountRepository = new AccountRepository();
 
@@ -41,7 +46,7 @@ public class ControllerServlet extends HttpServlet {
             account = accountRepository.login(username, password);
             if (account != null) {
                 HttpSession session = req.getSession();
-                session.setAttribute("session_name", account.getFull_name());
+                session.setAttribute("session_name", account);
                 RequestDispatcher requestDispatcher = req.getRequestDispatcher("/dashboard.jsp");
                 requestDispatcher.include(req,resp);
                 PrintWriter out = resp.getWriter();
@@ -59,6 +64,4 @@ public class ControllerServlet extends HttpServlet {
 
         }
     }
-
-
 }

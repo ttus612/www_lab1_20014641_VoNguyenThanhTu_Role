@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Home</a>
+        <a class="navbar-brand" href="dashboard.jsp?page=home">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -20,7 +20,8 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Add account</a></li>
-                        <li><a class="dropdown-item" href="account/list-account?action=listAccount">List account</a></li>
+                        <li><a class="dropdown-item" href="list-account?page=listAc&action=listAccount">List account</a></li>
+
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -28,7 +29,7 @@
                         Log
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Add log</a></li>
+                        <li><a class="dropdown-item"  href="#">Add log</a></li>
                         <li><a class="dropdown-item" href="#">List log</a></li>
                     </ul>
                 </li>
@@ -47,10 +48,10 @@
                 </li>
                 <li class="nav-item dropdown d-flex">
                     <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        ${session_name}
+                        ${session_name.getFull_name()}
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"> Information Account</a></li>
+                        <li><a class="dropdown-item" href="dashboard.jsp?page=infoAc"> Information Account</a></li>
                         <li><a class="dropdown-item" href="#">Log out</a></li>
                     </ul>
                 </li>
