@@ -53,6 +53,13 @@ public class Logs {
     public Logs() {
     }
 
+    public Logs( String account_id, Timestamp login_time, Timestamp logout_time, String notes) {
+        this.account_id = account_id;
+        this.login_time = login_time;
+        this.logout_time = logout_time;
+        this.notes = notes;
+    }
+
     public Logs(int id, String account_id, Timestamp login_time, Timestamp logout_time, String notes) {
         this.id = id;
         this.account_id = account_id;

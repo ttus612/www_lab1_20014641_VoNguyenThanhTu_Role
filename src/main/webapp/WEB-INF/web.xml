@@ -33,5 +33,21 @@
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern>/add-role</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/log-out</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/list-of-permissions</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/delete-role</url-pattern>
+    </servlet-mapping>
 </web-app>
 

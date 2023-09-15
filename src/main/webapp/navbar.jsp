@@ -21,7 +21,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Add account</a></li>
                         <li><a class="dropdown-item" href="list-account?page=listAc&action=listAccount">List account</a></li>
-
+                        <li><a class="dropdown-item" href="list-of-permissions?page=listPer&action=listPermission">List of permissions</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -52,7 +52,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="dashboard.jsp?page=infoAc"> Information Account</a></li>
-                        <li><a class="dropdown-item" href="#">Log out</a></li>
+                        <li><a class="dropdown-item" href="log-out?action=logout">Log out</a></li>
                     </ul>
                 </li>
             </ul>

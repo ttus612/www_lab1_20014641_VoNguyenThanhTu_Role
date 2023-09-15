@@ -73,4 +73,24 @@ public class RoleRepository {
             e.printStackTrace();
         }
     }
+
+    public boolean deleteRole(int roleId) {
+        String query = "DELETE FROM role WHERE role_id = ?";
+        try {
+            connection = new ConnectDB().getConnection();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, roleId);
+
+            int rowsDeleted = preparedStatement.executeUpdate();
+
+            return rowsDeleted > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            // Close resources here
+            closeResources();
+        }
+    }
+
 }

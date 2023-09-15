@@ -35,6 +35,8 @@
                     %><jsp:include page="role/listRole.jsp" /><%
                 }else if (pageNav.equals("addR")) {
                     %><jsp:include page="role/addRole.jsp" /><%
+                }else if (pageNav.equals("listPer")) {
+                     %><jsp:include page="account/listRoleAccount.jsp" /><%
                 }
              }
         %>
@@ -47,5 +49,6 @@
             alert("wef");
         }
     </script>
+
 </body>
 </html>
