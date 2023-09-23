@@ -12,6 +12,7 @@
     <title>Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 <body>
@@ -49,6 +50,27 @@
             alert("wef");
         }
     </script>
+    <script type="text/javascript">
+        function handleSelectChange(selectElement) {
+            const selectedValue = selectElement.value
+            const url = "list-of-permissions?action=listPermission";
+            // window.location.href = "list-of-permissions?action=listPermission"
+
+            $.ajax({
+                type: "POST",
+                url: url, // Replace with the correct URL to your Servlet
+                data: { selectedValue: selectedValue }, // Send selectedValue as a parameter
+                success: function (response) {
+                    // Handle the response from File 2 (if needed)
+                    console.log(response);
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        }
+    </script>
+
 
 </body>
 </html>
