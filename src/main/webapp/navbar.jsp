@@ -21,7 +21,10 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Add account</a></li>
                         <li><a class="dropdown-item" href="list-account?page=listAc&action=listAccount">List account</a></li>
-                        <li><a class="dropdown-item" href="list-of-permissions?page=listPer&action=listPermission">List of permissions</a></li>
+                        <li><a class="dropdown-item" href="list-of-permissions?page=listPer&action=listPermission">List account of permissions</a></li>
+<%--                        <li><a class="dropdown-item" href="list-of-permissions?page=listPer&action=listPermission">List role of account</a></li>--%>
+
+
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
