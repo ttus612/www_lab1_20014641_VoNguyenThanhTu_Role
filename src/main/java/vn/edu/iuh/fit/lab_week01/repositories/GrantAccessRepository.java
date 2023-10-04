@@ -105,7 +105,55 @@ public class GrantAccessRepository {
 
         return grantAccesses;
     }
+    public List<GrantAccess> getGrantAccessForNameAccount(String id) {
 
+        List<GrantAccess> grantAccesses = new ArrayList<>();
+        String query =
+                "SELECT * FROM account A " +
+                        "JOIN grant_access G ON A.account_id = G.account_id " +
+                        "JOIN role R ON G.role_id = R.role_id " +
+                        "WHERE A.account_id = ?";
+
+        try {
+            connection = new ConnectDB().getConnection();
+            preparedStatement = connection.prepareStatement(query);
+
+            // Set the parameter for the 'description' column
+            preparedStatement.setString(1, id);
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Role role = new Role(
+                        resultSet.getInt("role_id"),
+                        resultSet.getString("role_name"),
+                        resultSet.getString("description"),
+                        Status.fromCode(resultSet.getInt("status"))
+                );
+
+                Account account = new Account(
+                        resultSet.getString("account_id"),
+                        resultSet.getString("full_name"),
+                        resultSet.getString("password"),
+                        resultSet.getString("email"),
+                        resultSet.getString("phone"),
+                        Status.fromCode(resultSet.getInt("status"))
+                );
+
+                Grant grantAccessId = Grant.fromCode(resultSet.getInt("is_grant"));
+                String note = resultSet.getString("note");
+
+                GrantAccess grantAccess = new GrantAccess(role, account, grantAccessId, note);
+                grantAccesses.add(grantAccess);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return grantAccesses;
+    }
 
 //    public static void main(String[] args) {
 //        GrantAccessRepository grantAccessRepository  = new GrantAccessRepository();

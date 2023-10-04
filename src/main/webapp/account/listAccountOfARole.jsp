@@ -2,12 +2,13 @@
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.iuh.fit.lab_week01.models.Role" %>
 
-<h1>List of permissions </h1>
+<h1>List account of a role </h1>
 <form method="post">
     <label>Fillter Role:</label>
     <br>
     <%--    <select class="form-select" aria-label="Default select example" name="status" onchange="handleSelectChange(this)">--%>
     <select class="form-select" aria-label="Default select example" name="selectedValue">
+        <option value=0>Please select account</option>
         <%
             // Assume you have a List<User> userList containing your data
             List<Role> roleList = (List<Role>) request.getAttribute("roleList");
@@ -21,9 +22,10 @@
     </select>
     <br>
     <input type="hidden" name="action" value="fill_ter">
-    <input type="submit" class="btn btn-primary" value="Add role"></input>
+    <input type="submit" class="btn btn-primary" value="Filter role"></input>
 
 </form>
+
 <table class="table table-hover">
     <thead>
     <tr>
@@ -42,18 +44,6 @@
     <tbody id="tableData">
 
     <%
-        List<GrantAccess> grantAccesses2 = (List<GrantAccess>) request.getAttribute("roleList2");
-        if (grantAccesses2 == null){
-            System.out.println("Không có");
-        }else{
-            System.out.println("Có");
-            for (GrantAccess g2:
-            grantAccesses2) {
-                System.out.println(g2);
-            }
-        }
-
-
         List<GrantAccess> grantAccesses = (List<GrantAccess>) request.getAttribute("grantAccessesList");
         int i = 1;
         for (GrantAccess g : grantAccesses) {

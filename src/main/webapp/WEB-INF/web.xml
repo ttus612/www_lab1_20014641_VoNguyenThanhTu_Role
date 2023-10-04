@@ -44,10 +44,31 @@
         <url-pattern>/list-of-permissions</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/list-permissions-of-an-account</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/edit-role</url-pattern>
+    </servlet-mapping>
+
 
     <servlet-mapping>
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern>/delete-role</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/delete-account</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/add-account</url-pattern>
     </servlet-mapping>
 </web-app>
 

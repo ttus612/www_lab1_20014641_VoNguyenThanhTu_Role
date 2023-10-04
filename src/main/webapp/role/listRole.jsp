@@ -27,7 +27,7 @@
         <td>
             <div class="mb-3 row">
                 <div class="col-sm-6">
-                    <a href="#" class="btn btn-primary">Edit</a>
+                    <a href="edit-role?page=editR&action=editRole&roleId=<%= r.getRole_id()%>" class="btn btn-primary">Edit</a>
                 </div>
 
                 <div class="col-sm-6 ">

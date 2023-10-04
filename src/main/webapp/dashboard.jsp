@@ -23,23 +23,42 @@
         <%-- Thêm các thành phần con vào đây --%>
         <%
             String pageNav = request.getParameter("page");
-            if (pageNav != null) {
-                if (pageNav.equals("home")) {
-                    %><jsp:include page="home.jsp" /><%
-                }else if (pageNav.equals("listAc")) {
-                    %><jsp:include page="account/listAccount.jsp" /><%
-                }else if (pageNav.equals("infoAc")) {
-                    %><jsp:include page="account/informationAccount.jsp" /><%
-                } else if (pageNav.equals("listL")) {
-                    %><jsp:include page="log/listLog.jsp" /><%
-                } else if (pageNav.equals("listR")) {
-                    %><jsp:include page="role/listRole.jsp" /><%
-                }else if (pageNav.equals("addR")) {
-                    %><jsp:include page="role/addRole.jsp" /><%
-                }else if (pageNav.equals("listPer")) {
-                     %><jsp:include page="account/listRoleAccount.jsp" /><%
+            boolean check = (boolean) session.getAttribute("check_admin");%><%
+            if (check){
+                if (pageNav != null) {
+                    if (pageNav.equals("home")) {
+                        %><jsp:include page="home.jsp" /><%
+                    }else if (pageNav.equals("listAc")) {
+                        %><jsp:include page="account/listAccount.jsp" /><%
+                    }else if (pageNav.equals("infoAc")) {
+                        %><jsp:include page="account/informationAccount.jsp" /><%
+                    } else if (pageNav.equals("listL")) {
+                        %><jsp:include page="log/listLog.jsp" /><%
+                    } else if (pageNav.equals("listR")) {
+                        %><jsp:include page="role/listRole.jsp" /><%
+                    }else if (pageNav.equals("addR")) {
+                        %><jsp:include page="role/addRole.jsp" /><%
+                    }else if (pageNav.equals("listPer")) {
+                        %><jsp:include page="account/listAccountOfARole.jsp" /><%
+                    }else if (pageNav.equals("listPerOfAnAccount")) {
+                        %><jsp:include page="account/listPermissionsOfAnAccount.jsp" /><%
+                    }else if (pageNav.equals("editR")) {
+                        %><jsp:include page="role/editRole.jsp" /><%
+                    }else if (pageNav.equals("addAccount")) {
+                        %><jsp:include page="account/addAccount.jsp" /><%
+                    }
                 }
-             }
+            %><%
+            }else {
+                if (pageNav != null){
+                    if (pageNav.equals("home")){
+                        %><jsp:include page="home.jsp" /><%
+                    }else if (pageNav.equals("infoAc")) {
+                        %><jsp:include page="account/informationAccount.jsp" /><%
+                    }
+                }
+            }
+
         %>
     </div>
     <!-- Đường dẫn tới các tệp JavaScript của Bootstrap -->

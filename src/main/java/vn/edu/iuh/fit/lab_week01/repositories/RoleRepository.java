@@ -1,6 +1,7 @@
 package vn.edu.iuh.fit.lab_week01.repositories;
 
 import vn.edu.iuh.fit.lab_week01.db.ConnectDB;
+import vn.edu.iuh.fit.lab_week01.models.Account;
 import vn.edu.iuh.fit.lab_week01.models.Logs;
 import vn.edu.iuh.fit.lab_week01.models.Role;
 import vn.edu.iuh.fit.lab_week01.models.Status;
@@ -8,6 +9,7 @@ import vn.edu.iuh.fit.lab_week01.models.Status;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,15 +77,18 @@ public class RoleRepository {
     }
 
     public boolean deleteRole(int roleId) {
-        String query = "DELETE FROM role WHERE role_id = ?";
+        String query = "UPDATE role\n" +
+                "SET STATUS = -1\n" +
+                "WHERE role_id = ?";
         try {
             connection = new ConnectDB().getConnection();
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, roleId);
 
-            int rowsDeleted = preparedStatement.executeUpdate();
+            int rowsUpdated = preparedStatement.executeUpdate();
 
-            return rowsDeleted > 0;
+
+            return rowsUpdated > 0;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -93,4 +98,82 @@ public class RoleRepository {
         }
     }
 
+    public Role getRoleOne(int roleIdString) {
+        String query = "SELECT * \n" +
+                "FROM role\n" +
+                "WHERE  role_id = ?\n";
+
+        try {
+            connection = new ConnectDB().getConnection();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, roleIdString);
+
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                Role role = new Role(
+                resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        Status.fromCode(resultSet.getInt("status")));
+
+                return role;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+
+    public Role getRoleOneName(String roleName) {
+        String query = "SELECT * \n" +
+                "FROM role\n" +
+                "WHERE  role_name = ?\n";
+
+        try {
+            connection = new ConnectDB().getConnection();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, roleName);
+
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                Role role = new Role(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        Status.fromCode(resultSet.getInt("status")));
+
+                return role;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+
+    public boolean edit(Role role) {
+
+        String query = "UPDATE role SET role_name = ?, DESCRIPTION = ?, STATUS = ? WHERE role_id = ?";
+        try {
+            connection = new ConnectDB().getConnection();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, role.getRole_name());
+            preparedStatement.setString(2, role.getDescription());
+            preparedStatement.setInt(3, role.getStatus().getCode());
+            preparedStatement.setInt(4, role.getRole_id());
+            int rowsUpdated = preparedStatement.executeUpdate();
+            System.out.println(role);
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            // Close resources here
+            closeResources();
+        }
+
+    }
 }
