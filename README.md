@@ -30,6 +30,10 @@
   <img width="48" height="48" src="https://img.icons8.com/color/48/web.png" alt="web"/>
 </p>
 
+## Yêu cầu Project :
+<p align="center">
+  <img src="images/yeuCau.jpg" width = 80%/>
+</p>
 
 # Nội dung của project:
 
